@@ -1,35 +1,58 @@
-# heart-disease-prediction
-Heart Disease Prediction Model
-Overview
-This project aims to predict the presence of heart disease based on certain medical attributes. The model uses logistic regression and is trained on a dataset containing patient information.
-Dataset
-The dataset used in this project is a CSV file named heart (1).csv, which contains the following columns:
-age: Age of the patient
-cp: Chest pain type (0-3)
-thalach: Maximum heart rate achieved
-target: Presence of heart disease (1) or absence (0)
-Dependencies
-To run this project, you need the following Python libraries:
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-joblib
-You can install these dependencies using pip:
-bash
-Copy
-pip install pandas numpy matplotlib seaborn scikit-learn joblib
-Model Training and Evaluation
-The model is trained using logistic regression. The dataset is split into training and testing sets with an 80/20 ratio. The model's performance is evaluated using accuracy, confusion matrix, classification report, and ROC AUC score.
-Usage
-Training the Model
-Ensure you have the dataset file heart (1).csv in the same directory as the script.
-Run the script to train the model and evaluate its performance.
-Making Predictions
-The script includes a function predict_heart_disease() that allows users to input their medical attributes and receive a prediction. To use this function:
-Run the script.
-Follow the prompts to enter your age, chest pain type, and maximum heart rate achieved.
-The script will output whether heart disease is present or not.
-Saving the Model
-The trained model is saved as heart_disease_model.pkl using joblib. This allows you to load the model later for predictions without retraining.
+# ❤️ Heart Disease Prediction Web App
+
+## Overview 🧐
+
+This project is a **Heart Disease Prediction System** that leverages machine learning (ML) to predict whether an individual has heart disease based on their medical data. The app uses a **Logistic Regression** model trained on a dataset of heart disease-related features like age, chest pain type, and maximum heart rate. The backend is built using **Flask** (Python), and the frontend is built using **HTML, CSS, and JavaScript**.
+
+### Key Features ✨:
+- 🔍 Predict heart disease based on user input.
+- 🖥️ Simple, intuitive web interface.
+- ⚡ Flask API to handle predictions.
+- 📦 Model is stored and loaded via `joblib`.
+
+## How It Works 🔄
+
+1. The user inputs three features:
+   - **Age**: The age of the individual.
+   - **Chest Pain Type** (`cp`): Type of chest pain (0-3).
+   - **Maximum Heart Rate** (`thalach`): The maximum heart rate achieved.
+
+2. The input data is sent to the backend, where a pre-trained **Logistic Regression** model makes a prediction: either **"Heart Disease Present"** or **"No Heart Disease"**.
+
+3. The result is displayed on the frontend in real-time.
+
+## Technologies Used 🛠️
+
+- **Backend**:
+  - Python 🐍
+  - Flask 🥖
+  - Joblib (for saving and loading the model) 💼
+  - pandas (for data manipulation) 📊
+  
+- **Frontend**:
+  - HTML 📄
+  - CSS 🎨
+  - JavaScript 💻 (for API calls)
+  - AJAX 🌐 (for sending requests and handling responses)
+
+- **Machine Learning**:
+  - Logistic Regression 🔍
+  - Scikit-learn 🤖
+  
+## How to Run the Project Locally 🏡
+
+Follow these steps to run the project on your local machine:
+
+### Prerequisites ⚡:
+
+1. **Python 3.x** installed on your machine.
+2. **Visual Studio Code (VS Code)** or another code editor of your choice.
+3. **Python libraries**: `Flask`, `joblib`, `pandas`, `scikit-learn` installed.
+
+### Steps to Set Up 📝:
+
+1. **Clone this repository**:
+
+   ```bash
+   git clone https://github.com/your-username/heart-disease-prediction.git
+   cd heart-disease-prediction
