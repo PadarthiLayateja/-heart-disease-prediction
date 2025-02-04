@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Heart Disease Prediction</h1>
+    <label for="age">Enter Age:</label>
+    <input type="number" id="age" placeholder="Enter age">
+    
+    <label for="cp">Enter Chest Pain Type (0-3):</label>
+    <input type="number" id="cp" placeholder="Enter chest pain type (0-3)">
+    
+    <label for="thalach">Enter Maximum Heart Rate:</label>
+    <input type="number" id="thalach" placeholder="Enter maximum heart rate">
+
+    <button onclick="predictHeartDisease()">Predict</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function predictHeartDisease() {
+        var age = document.getElementById('age').value;
+        var cp = document.getElementById('cp').value;
+        var thalach = document.getElementById('thalach').value;
+
+        if (!age || !cp || !thalach) {
+            alert('Please fill all fields!');
+            return;
+        }
+
+        var userData = {
+            age: parseInt(age),
+            cp: parseInt(cp),
+            thalach: parseInt(thalach)
+        };
+
+        fetch('http://127.0.0.1:5000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerText = 'Prediction: ' + data.prediction;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+</body>
+</html>
